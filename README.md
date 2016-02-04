@@ -10,4 +10,4 @@ Added hudl changes:
 
 ## Release History
 
- * 2016-02-04   v0.1.0   Based on v0.4.2 of iamch  Refactored Fail cases
+ * 2016-02-04   v0.1.0   Based on v0.4.2 of iamchrismiller/grunt-casper
