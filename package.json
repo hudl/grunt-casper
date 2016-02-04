@@ -35,7 +35,7 @@
     "grunt-cli": "~0.1.13"
   },
   "dependencies": {
-    "hudl-casperjs": "~1.0",
+    "casperjs-teamcity": "~1.0",
     "duration": "~0.2.0",
     "lodash": "~2.4.1",
     "phantomjs": "~2.1.3",
