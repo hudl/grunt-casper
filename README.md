@@ -1,4 +1,4 @@
-# hudl-grunt-casper
+# grunt-casper-teamcity
 
 Fork of https://github.com/iamchrismiller/grunt-casper
 
