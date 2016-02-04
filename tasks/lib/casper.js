@@ -79,7 +79,7 @@ exports.init = function(grunt) {
         //Windows Check
         var isWindows = /^win/.test(process.platform),
           //NPM Module Path
-          moduleBinPath = "/hudl-casperjs/bin/casperjs";
+          moduleBinPath = "/casperjs-teamcity/bin/casperjs";
 
         //Loop through local/global node_modules dirs
         casper.modulePaths.every(function(path) {
