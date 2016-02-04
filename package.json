@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hudl/hudl-grunt-casper.git"
+    "url": "git@github.com:hudl/grunt-casper.git"
   },
-  "bugs": "https://github.com/hudl/hudl-grunt-casper/issues/",
+  "bugs": "https://github.com/hudl/grunt-casper/issues/",
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/hudl/hudl-grunt-casper/blob/master/LICENSE-MIT"
+    "url": "https://github.com/hudl/grunt-casper/blob/master/LICENSE-MIT"
   }],
   "scripts": {
     "test": "grunt test --verbose"
@@ -24,8 +24,8 @@
     "casperjs",
     "grunt-casperjs",
     "grunt-casper",
-    "hudl-grunt-casper",
-    "hudl"
+    "grunt-casper-teamcity",
+    "teamcity"
   ],
   "devDependencies": {
     "grunt-contrib-jshint": "~0.10.0",
