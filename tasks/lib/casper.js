@@ -8,7 +8,7 @@ var path = require('path'),
 var _ = require('lodash');
 
 //npm install wrapper
-var phantomjs = require('phantomjs');
+var phantomjs = require('phantomjs-prebuilt');
 var slimerjs = require('slimerjs');
 
 function getTeamCityNowDate() {
