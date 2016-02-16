@@ -1,7 +1,7 @@
 {
   "name": "grunt-casper-teamcity",
   "description": "Run Casper CLI Scripts With Grunt + Hudl changes to support teamcity logs. This is fork of grunt-casper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": {
     "name": "Damian Turczynski",
     "email": "damtur@outlook.com"

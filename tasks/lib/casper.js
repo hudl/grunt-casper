@@ -7,6 +7,8 @@ var path = require('path'),
 //npm
 var _ = require('lodash');
 
+var additionalLogFilePath = 'testOutput.log';
+
 //npm install wrapper
 var phantomjs = require('phantomjs-prebuilt');
 var slimerjs = require('slimerjs');
@@ -22,6 +24,15 @@ function getTeamCityNowDate() {
  */
 exports.init = function(grunt) {
   'use strict';
+
+  var instantLog = function instantLog() {
+    var args = Array.prototype.slice.call(arguments);
+    var dataToWrite = args.join(' ');
+
+    fs.appendFile(additionalLogFilePath, dataToWrite, function(err) {
+      grunt.verbose.write('Could not appended to instant log file. Err:', err, '\n');
+    });
+  };
 
   var casper = {
 
@@ -57,17 +68,20 @@ exports.init = function(grunt) {
      */
     spawn: function(cwd, args, next) {
       grunt.verbose.write('Spawning casperjs with args: ', args, '\n');
+      instantLog('Spawning casperjs with args: ', args, '\n');
       //No CasperBin Found Yet
       var casperBin = null;
 
       //Set PhantomJS Path only if the file exists, otherwise fall back to ENV
       if (fs.existsSync(phantomjs.path)) {
         grunt.verbose.write('Found PhantomJS Executable', phantomjs.path, '\n');
+        instantLog('Found PhantomJS Executable', phantomjs.path, '\n');
         process.env["PHANTOMJS_EXECUTABLE"] = phantomjs.path;
       }
 
       if (fs.existsSync(slimerjs.path)) {
         grunt.verbose.write('Found SlimerJS Executable', slimerjs.path, '\n');
+        instantLog('Found SlimerJS Executable', slimerjs.path, '\n');
         process.env["SLIMERJS_EXECUTABLE"] = slimerjs.path;
       }
 
@@ -101,6 +115,7 @@ exports.init = function(grunt) {
       }
 
       grunt.verbose.write('Found CasperJS Executable', casperBin);
+      instantLog('Found CasperJS Executable', casperBin);
 
       //Spawn Casper Process
       grunt.util.spawn({
@@ -119,9 +134,17 @@ exports.init = function(grunt) {
         }
 
         grunt.log.write("##teamcity[testSuiteStarted name='" + args[1] + "' timestamp='" + getTeamCityNowDate() + "']\n");
-        if (result.stdout) grunt.log.write(result.stdout + '\n\n');
-        if (result.stderr) grunt.log.write(result.stderr + '\n\n');
+        instantLog("##teamcity[testSuiteStarted name='" + args[1] + "' timestamp='" + getTeamCityNowDate() + "']\n");
+        if (result.stdout) {
+          grunt.log.write(result.stdout + '\n\n');
+          instantLog(result.stdout + '\n\n');
+        }
+        if (result.stderr) {
+          grunt.log.write(result.stderr + '\n\n');
+          instantLog(result.stderr + '\n\n');
+        }
         grunt.log.write("##teamcity[testSuiteFinished name='" + args[1] + "' timestamp='" + getTeamCityNowDate() + "']\n");
+        instantLog("##teamcity[testSuiteFinished name='" + args[1] + "' timestamp='" + getTeamCityNowDate() + "']\n");
         next();
       });
     }
