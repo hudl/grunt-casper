@@ -37,7 +37,7 @@
   "dependencies": {
     "casperjs-teamcity": "~1.0",
     "duration": "~0.2.0",
-    "lodash": "~2.4.1",
+    "lodash": "~4.17.21",
     "phantomjs-prebuilt": "~2.1.3",
     "slimerjs": "^0.9.1-2"
   }
